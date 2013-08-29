@@ -10,17 +10,26 @@ Platformer.setBlockKeyDown = function(func){
 Platformer.setBlockKeyUp = function(func){
 	Platformer.blockKeyUp = func;
 }
+
 Platformer.bindingsDown = [];
 Platformer.bindingsUp = [];
 Platformer.keysDownBuffer = [];
 Platformer.keysUpBuffer = [];
-
 Platformer.keys = [];
-Platformer.setBindingDown= function(key, func){
+
+Platformer.setBindingDown = function(key, func){
 	Platformer.bindingsDown[key]=func;
 }
-Platformer.setBindingUp= function(key, func){
+Platformer.setBindingUp = function(key, func){
 	Platformer.bindingsDown[key]=func;
+}
+Platformer.moveBindingUp = function(from, to){
+	Platformer.setBindingUp(to,Platformer.bindingsUp[from]);
+	Platformer.setBindingUp(from,function(){});
+}
+Platformer.moveBindingDown = function(from, to){
+	Platformer.setBindingDown(to,Platformer.bindingsDown[from]);
+	Platformer.setBindingDown(from,function(){});
 }
 Platformer.init_keys = function(){
 	Platformer.blockKeyUp = function(){
