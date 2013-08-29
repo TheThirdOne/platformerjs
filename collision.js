@@ -33,3 +33,15 @@ function collide(x,y,children){
 	}
 	return false;
 }
+function testCollision(object, x, y){
+	if(object.getY() > y || object.getY() + object.getHeight() < y)
+		return false;	
+	if(object.getScaleX() > 0){
+		if(object.getX() > x || object.getX() + object.getWidth() < x)
+				return false;
+	}else{
+		if(object.getX() < x || object.getX() - object.getWidth() > x)
+				return false;
+	}
+	return true;
+}
