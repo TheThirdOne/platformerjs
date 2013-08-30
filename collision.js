@@ -1,12 +1,12 @@
-function onGround(sprite, children){
+Platformer.onGround = function(sprite, children){
 	return collide(sprite.getX() + sprite.getWidth()*sprite.getScaleX()*.2,sprite.getY()+sprite.getHeight(), children)||
 	       collide(sprite.getX() + sprite.getWidth()*sprite.getScaleX()*.8,sprite.getY()+sprite.getHeight(), children);
 }
-function collideHead(sprite, children){
+Platformer.collideHead = function(sprite, children){
 	return  collide(sprite.getX() + sprite.getWidth()*sprite.getScaleX()*.2,sprite.getY(), children)||
 	        collide(sprite.getX() + sprite.getWidth()*sprite.getScaleX()*.8,sprite.getY(), children);
 }
-function collideLeft(sprite, children){
+Platformer.collideLeft = function(sprite, children){
 	if(sprite.getScaleX() > 0)
 		return collide(sprite.getX(),sprite.getY()+sprite.getHeight()*.8, children)||
 	           collide(sprite.getX(),sprite.getY()+sprite.getHeight()*.2, children);
@@ -14,7 +14,7 @@ function collideLeft(sprite, children){
 		return collide(sprite.getX() - sprite.getWidth(),sprite.getY()+sprite.getHeight()*.8, children)||
 	           collide(sprite.getX() - sprite.getWidth(),sprite.getY()+sprite.getHeight()*.2, children);
 }
-function collideRight(sprite, children){
+Platformer.collideRight = function(sprite, children){
 	if(sprite.getScaleX() > 0)
 		return collide(sprite.getX() + sprite.getWidth(),sprite.getY()+sprite.getHeight()*.8, children)||
 	           collide(sprite.getX() + sprite.getWidth(),sprite.getY()+sprite.getHeight()*.2, children);
@@ -22,7 +22,7 @@ function collideRight(sprite, children){
 		return collide(sprite.getX(),sprite.getY()+sprite.getHeight()*.8, children)||
 	           collide(sprite.getX(),sprite.getY()+sprite.getHeight()*.2, children);
 }
-function collide(x,y,children){
+Platformer.collide = function(x,y,children){
 	if(!children){
 		var temp = collision.getChildren();
 	}else
@@ -33,7 +33,7 @@ function collide(x,y,children){
 	}
 	return false;
 }
-function testCollision(object, x, y){
+Platformer.testCollision = function(object, x, y){
 	if(object.getY() > y || object.getY() + object.getHeight() < y)
 		return false;	
 	if(object.getScaleX() > 0){
