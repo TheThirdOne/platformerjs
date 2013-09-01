@@ -31,23 +31,7 @@ Platformer.moveBindingDown = function(from, to){
 	Platformer.setBindingDown(to,Platformer.bindingsDown[from]);
 	Platformer.setBindingDown(from,function(){});
 }
-/*
-	Function: initKeys
-
-	Initializes callbacks necessary for key bindings
-
-	Prameters:
-
-		None
-
-	Returns:
-
-		None
-
-	See also:
-
-		NA
-*/
+//Initializes keybindings. Resets block and unlock keys and onkeydown and onkeyup
 Platformer.initKeys = function(){
 	Platformer.blockKeyUp = function(){
 		return false;
