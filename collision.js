@@ -23,12 +23,8 @@ Platformer.collideRight = function(sprite, children){
 	           collide(sprite.getX(),sprite.getY()+sprite.getHeight()*.2, children);
 }
 Platformer.collide = function(x,y,children){
-	if(!children){
-		var temp = collision.getChildren();
-	}else
-		var temp = children
-	for(var i = 0; i < temp.length; i++){
-		if(testCollision(temp[i],x,y))
+	for(var i = 0; i < children.length; i++){
+		if(testCollision(children[i],x,y))
 			return true;
 	}
 	return false;
