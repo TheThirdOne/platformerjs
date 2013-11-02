@@ -1,19 +1,20 @@
-Platformer.Entity = function(sprite){
+Platformer.Entity = function(sprite, options){
 	this.sprite = new Kinetic.Sprite(sprite);
 };
 Platformer.Entity.prototype={
 	dy: 0,
 	dx: 0,
-	setDirection: function(direction){
+	/**Sets direction flipping about the middle*/
+	setDirectionX: function(direction){
 		if(direction > 0){
 			if(this.getScaleX() < 0){
 	      		this.setScaleX(1);
-	     		this.setX(this.sprite.getX() - this.getWidth()/2);
+	     		this.setX(this.getX() - this.getWidth()/2);
 	    	}
 	    }else{
 	    	if(this.getScaleX() > 0){
 		      this.setScaleX(-1);
-		      this.setX(this.sprite.getX() + this.getWidth()/2);
+		      this.setX(this.getX() + this.getWidth()/2);
 		    }
 	    }
 	},
@@ -26,10 +27,23 @@ Platformer.Entity.prototype={
 	getWidth: function(x){
 		return this.sprite.getWitdh();
 	},
+	getHeight: function(x){
+		return this.sprite.getHeight();
+	},
 	setX: function (x){
 		this.sprite.setX(x);
 	},
 	getX: function (){
 		this.sprite.getX();
+	},
+	setY: function (y){
+		this.sprite.setY(y);
+	},
+	getY: function (){
+		this.sprite.getY();
 	}
+}
+Platformer.createPlayer = function(sprite,options){
+	var temp = new Platformer.Entity(sprite,options);
+	//temp does stuff
 }
