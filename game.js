@@ -47,3 +47,24 @@ Platformer.createPlayer = function(sprite,options){
 	var temp = new Platformer.Entity(sprite,options);
 	//temp does stuff
 }
+Platformer.Level = function(collision,AI,enemies){
+	this.collision = Platformer.generateCollisions(collision);
+	this.enemies = Platformer.generateEnemies(AI,enemies);
+	this.offsetX = 0;
+	this.offsetY = 0;
+}
+Platformer.generateCollisions = function(level){
+        var out = [];
+        for(var i = 0; i < level.blocks.length; i++){
+                out[i]= new Kinetic.Rect({x: level.blocks[i][0],y: level.blocks[i][1],
+                        width: level.blocks[i][2],height:level.blocks[i][3],fillPatternImage: level.type[i].image});
+        }
+        return out;
+}
+Platformer.generateEnemies = function(AI,enemies){
+        var out = [];
+        for(var i = 0; i < enemies.length; i++){
+                out[i]= new AI(enemies[i])
+        }
+        return out;
+}
