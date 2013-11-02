@@ -8,6 +8,9 @@ PLatformer.Entity = function(sprite){
 	this.setX = function (x){
 		this.sprite.setX(x);
 	};
+	this.getX = function (){
+		this.sprite.getX();
+	}
 	this.setScaleX = function(x){
 		this.sprite.setScaleX(x);
 	};

@@ -32,7 +32,9 @@ Platformer.moveBindingDown = function(from, to){
 	Platformer.setBindingDown(from,function(){});
 }
 //Initializes keybindings. Resets block and unlock keys and onkeydown and onkeyup
-Platformer.initKeys = function(){
+Platformer.initKeys = function(up,down){
+	Platformer.bindingsDown = down || [];
+	Platformer.bindingsUp = up || [];
 	Platformer.blockKeyUp = function(){
 		return false;
 	}
