@@ -40,3 +40,16 @@ Platformer.play_multi_sound = function(s, start) {
     }
   }
 }
+Platformer.loadImages = function(src){
+  Platformer.images = [];
+  Platformer.itemsToLoad = Platformer.itemsToLoad || 0;
+  Platformer.itemsToLoad += src.length;
+  function start(){
+    Platformer.load();
+  }
+  for (var i = src.length - 1; i >= 0; i--) {
+    Platformer.images[i] = new Image();
+    Platformer.images[i].onload = start;
+    Platformer.images[i].src = src[i]
+  };
+}

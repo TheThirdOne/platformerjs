@@ -52,6 +52,10 @@ Platformer.Level = function(collision,AI,enemies){
 	this.enemies = Platformer.generateEnemies(AI,enemies);
 	this.offsetX = 0;
 	this.offsetY = 0;
+	this.base = Platformer.levelBase()
+}
+Platformer.setLevelBase = function(func){
+	Platformer.levelBase = func;
 }
 Platformer.generateCollisions = function(level){
         var out = [];
