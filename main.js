@@ -1,6 +1,8 @@
 var Platformer = {};
 Platformer.playLevel = function(level){
-	Platformer.reset();
+	Platformer.reset(Platformer.currentLevel);
+	Platformer.currentLevel = level;
+	Platformer.currentLevel.init();
 }
 Platformer.load = function()
 {
@@ -17,6 +19,8 @@ Platformer.init=function(container,w,h)
 	  height: h
 	});
 }
-Platformer.reset = function(){
-	
+Platformer.reset = function(level){
+	if(!level)
+		return;
+	level.destroy();
 }
