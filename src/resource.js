@@ -1,7 +1,7 @@
 Platformer.AnimationSet = function(data){
   var out = {};
   for(var i = 0; i < data.anims.length; i++){
-    out[data.anims[i].name]=Animation(data.anims[i].slides,data);
+    out[data.anims[i].name]=Platformer.Animation(data.anims[i].slides,data);
   }
   return out;
 }

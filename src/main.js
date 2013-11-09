@@ -8,7 +8,7 @@ Platformer.load = function()
 {
 	Platformer.itemsToLoad--;
 	if(Platformer.itemsToLoad === 0){
-		
+		Platformer.onLoad();
 	}
 }
 Platformer.init=function(container,w,h)
