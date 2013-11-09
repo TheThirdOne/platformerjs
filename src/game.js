@@ -47,16 +47,16 @@ Platformer.createPlayer = function(sprite,options){
 	var temp = new Platformer.Entity(sprite,options);
 	//temp does stuff
 }
-Platformer.Level = function(collision,AI,enemies,player,init,options){
+Platformer.Level = function(options){
 	this.name = options.name || "Unnamed Level";
-	this.init = init;
+	this.init = options.init;
 	this.destroy = options.destroy || function(){};
-	this.player = player;
-	this.collision = Platformer.generateCollisions(collision);
-	this.enemies = Platformer.generateEnemies(AI,enemies);
+	this.player = options.player;
+	this.collision = Platformer.generateCollisions(options.collision);
+	this.enemies = Platformer.generateEnemies(options.AI,options.enemies);
 	this.offsetX = 0;
 	this.offsetY = 0;
-	this.base = Platformer.levelBase();
+	this.base = new Platformer.levelBase();
 }
 Platformer.setLevelBase = function(func){
 	Platformer.levelBase = func;
