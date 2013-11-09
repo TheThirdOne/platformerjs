@@ -28,18 +28,12 @@ Platformer.moveBindingDown = function(from, to){
 }
 /**Initializes keybindings. Resets block and unlock keys and onkeydown and onkeyup**/
 Platformer.initKeys = function(up,down){
-	Platformer.bindingsDown = down || [];
-	Platformer.bindingsUp = up || [];
-	Platformer.blockKeyUp = function(){
+	Platformer.bindingsDown = down || Platformer.bindingsDown ||[];
+	Platformer.bindingsUp = up || Platformer.bindingsUp || [];
+	Platformer.blockKeys = Platformer.blockKeys || function(){
 		return false;
 	}
-	Platformer.blockKeyDown = function(){
-		return false;
-	}
-	Platformer.unlockKeyDown = function(){
-		return false;
-	}
-	Platformer.unlockKeyUp = function(){
+	Platformer.unlockKeys = Platformer.unlockKeys || function(){
 		return false;
 	}
 	document.onkeydown = function(evt){
@@ -48,7 +42,7 @@ Platformer.initKeys = function(up,down){
 	    console.log(evt.keyCode);
 	    if(!Platformer.blockKeys(evt) || Platformer.unlockKeys(evt))
 	    	if(Platformer.bindingsDown[evt.keyCode])
-	      		Platformer.bindingsDown[evt.keyCode]();
+	      		Platformer.bindingsDown[evt.keyCode](evt);
 	  	else
 	  		Platformer.keyBuffer.push(evt);
 	  }
@@ -57,7 +51,7 @@ Platformer.initKeys = function(up,down){
 	  Platformer.keys[evt.keyCode] = false;
 	  if(!Platformer.blockKeys(evt) || Platformer.unlockKeys(evt)){
 		  if(Platformer.bindingsUp[evt.keyCode])
-		      Platformer.bindingsUp[evt.keyCode]();
+		      Platformer.bindingsUp[evt.keyCode](evt);
 		}else{
 			Platformer.keyBuffer.push(evt);
 		}
