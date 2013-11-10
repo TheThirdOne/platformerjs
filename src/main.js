@@ -2,7 +2,7 @@ var Platformer = {};
 Platformer.playLevel = function(level){
 	Platformer.reset(Platformer.currentLevel);
 	Platformer.currentLevel = level;
-	Platformer.currentLevel.init();
+	Platformer.currentLevel.start();
 }
 Platformer.load = function()
 {
