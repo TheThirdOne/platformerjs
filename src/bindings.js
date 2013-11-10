@@ -30,6 +30,8 @@ Platformer.moveBindingDown = function(from, to){
 Platformer.initKeys = function(up,down){
 	Platformer.bindingsDown = down || Platformer.bindingsDown ||[];
 	Platformer.bindingsUp = up || Platformer.bindingsUp || [];
+	Platformer.keyBuffer = [];
+	Platformer.keys = [];
 	Platformer.blockKeys = Platformer.blockKeys || function(){
 		return false;
 	}
