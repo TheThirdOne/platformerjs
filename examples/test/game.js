@@ -31,6 +31,21 @@ var clockanimation = Platformer.AnimationSet(clock);
 var alarmanimation = Platformer.AnimationSet(alarm);
 Platformer.onLoad = function(){
   console.log(Platformer.images);
+  var back = new Kinetic.Rect({
+        x: 0,
+        y: 0,
+        width: 1000,
+        height: 400,
+        fillPatternImage: Platformer.images[3]
+      });
+  var layer = new Kinetic.Layer();
+  var level = new levels.base();
+  layer.add(back);
+  Platformer.init('container',600,600);
+  Platformer.stage.add(layer);
+ // level.clock.start();
+  
+
 }
 Platformer.loadImages(['res/spy.png','res/thug.png','res/ground.png','res/concrete.png',
 	'res/ladder.png','res/knife.png','res/crate.png','res/clock.png','res/alarm.png']);
