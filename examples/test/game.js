@@ -2,7 +2,7 @@
 var down = 83, left = 65, right = 68, up=87, attack=32, pause=80;
 Platformer.initKeys();
 function initKeys(){
-	Platformer.setBindingUp(down, function(){console.log('hello')})
+	Platformer.setBindingUp(down, function(){console.log('hello')});
 }
 var person = {
   anims:[{name: 'idle', slides:[7]},
@@ -46,6 +46,6 @@ Platformer.onLoad = function(){
  // level.clock.start();
   
 
-}
+};
 Platformer.loadImages(['res/spy.png','res/thug.png','res/ground.png','res/concrete.png',
 	'res/ladder.png','res/knife.png','res/crate.png','res/clock.png','res/alarm.png']);

@@ -5,7 +5,7 @@ var temp = function(){
     image: Platformer.images[7],
     animation: 'run',
     animations: clockanimation,
-    frameRate: .88,
+    frameRate: 0.88,
     index: 0,
     width: 64,
     height:64
@@ -82,8 +82,8 @@ var temp = function(){
   };
   this.loop = function(){
     console.log('hello');
-  }
-}
+  };
+};
 Platformer.setLevelBase(temp);
 
 var levels = [];
@@ -114,32 +114,32 @@ var init = function(){
   hud.add(this.base.alarm);
   this.base.alarm.start();
   hud.add(this.base.pauseText);
-  hud.add(this.base.gameOver)
+  hud.add(this.base.gameOver);
   //stage.add(hud);
   this.interval = window.setInterval(this.loop,constants.playloop);
   init_bindings();
-}
+};
 var destroy = function(){
   window.clearInterval(this.interval);
   var temp = collision.getChildren();
   for(var i = temp.length-1; 0 <= i; i--){
-    temp[i].destroy()
+    temp[i].destroy();
   }
   temp = ladders.getChildren();
   for(var i = temp.length-1; 0 <= i; i--){
-    temp[i].destroy()
+    temp[i].destroy();
   }
   temp = enemies.getChildren();
   for(var i = temp.length-1; 0 <= i; i--){
-    temp[i].destroy()
+    temp[i].destroy();
   }
   temp = playerLayer.getChildren();
   for(var i = temp.length-1; 0 <= i; i--){
-    temp[i].destroy()
+    temp[i].destroy();
   }
   temp = hud.getChildren();
   for(var i = temp.length-1; 0 <= i; i--){
-    temp[i].destroy()
+    temp[i].destroy();
   }
-}
+};
 levels[0] = new Platformer.Level({name: 0, init: init, destroy: destroy,player:{}});
