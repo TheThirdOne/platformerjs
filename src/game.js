@@ -8,15 +8,15 @@ Platformer.Entity.prototype={
 	setDirectionX: function(direction){
 		if(direction > 0){
 			if(this.getScaleX() < 0){
-	      		this.setScaleX(1);
-	     		this.setX(this.getX() - this.getWidth()/2);
-	    	}
-	    }else{
-	    	if(this.getScaleX() > 0){
-		      this.setScaleX(-1);
-		      this.setX(this.getX() + this.getWidth()/2);
-		    }
-	    }
+        this.setScaleX(1);
+        this.setX(this.getX() - this.getWidth()/2);
+        }
+      }else{
+        if(this.getScaleX() > 0){
+          this.setScaleX(-1);
+          this.setX(this.getX() + this.getWidth()/2);
+        }
+      }
 	},
 	getScaleX: function(){
 		this.sprite.getScaleX();
@@ -42,11 +42,11 @@ Platformer.Entity.prototype={
 	getY: function (){
 		this.sprite.getY();
 	}
-}
+};
 Platformer.createPlayer = function(sprite,options){
 	var temp = new Platformer.Entity(sprite,options);
 	//temp does stuff
-}
+};
 Platformer.Level = function(options){
 	this.name = options.name || "Unnamed Level";
 	this.start = options.start || function(){};
@@ -60,10 +60,10 @@ Platformer.Level = function(options){
 	this.base = new Platformer.levelBase();
 	if(this.init)
 		this.init();
-}
+};
 Platformer.setLevelBase = function(func){
 	Platformer.levelBase = func;
-}
+};
 Platformer.generateBlocks = function(level){
 		if(!level)
 			return [];
@@ -73,11 +73,11 @@ Platformer.generateBlocks = function(level){
                         width: level.blocks[i][2],height:level.blocks[i][3],fillPatternImage: level.images[level.type[i]]});
         }
         return out;
-}
+};
 Platformer.generateEnemies = function(AI,enemies){
         var out = [];
         for(var i = 0; i < enemies.length; i++){
-                out[i]= new AI(enemies[i])
+                out[i]= new AI(enemies[i]);
         }
         return out;
-}
+};
