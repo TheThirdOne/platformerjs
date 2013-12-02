@@ -32,6 +32,7 @@ var thuganimation = Platformer.AnimationSet(person);
 var knifeanimation = Platformer.AnimationSet(knife);
 var clockanimation = Platformer.AnimationSet(clock);
 var alarmanimation = Platformer.AnimationSet(alarm);
+var playerlayer, enemies, hud; 
 Platformer.onLoad = function(){
   console.log(Platformer.images);
   var back = new Kinetic.Rect({
@@ -41,14 +42,17 @@ Platformer.onLoad = function(){
         height: 400,
         fillPatternImage: Platformer.images[3]
       });
-  levels[0] = new Platformer.Level({name: 0, init: init, destroy: destroy,player:{}});
-  var layer = new Kinetic.Layer();
+  
+  layer = new Kinetic.Layer();
+  playerLayer = new Kinetic.Layer();
+  enemies = new Kinetic.Layer();
+  hud = new Kinetic.Layer();
   var level = new Platformer.levelBase();
   layer.add(back);
   Platformer.init('container',600,600);
   Platformer.stage.add(layer);
  // level.clock.start();
-  
+  levels[0] = new Platformer.Level({name: 0, init: init, destroy: destroy,player:{}});
 
 };
 Platformer.loadImages(['res/spy.png','res/thug.png','res/ground.png','res/concrete.png',

@@ -110,10 +110,10 @@ var init = function(){
   for(i = 0; i < this.enemies.length;i++){
     hud.add(level.enemies[i].sight);
   }
-  /*hud.add(this.base.clock);
+  hud.add(this.clock);
   this.clock.start();
-  hud.add(this.base.alarm);
-  thisalarm.start();
+  hud.add(this.alarm);
+  this.alarm.start();
   hud.add(this.pauseText);
   hud.add(this.gameOver);
   //stage.add(hud);*/
