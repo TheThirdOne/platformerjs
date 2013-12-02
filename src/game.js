@@ -53,11 +53,11 @@ Platformer.Level = function(options){
 	this.init = options.init;
 	this.destroy = options.destroy || function(){};
 	this.player = options.player;
-	this.blocks = Platformer.generateBlocks(options.collision);
+	this.collision = Platformer.generateBlocks(options.collision);
 	this.enemies = Platformer.generateEnemies(options.AI,options.enemies);
 	this.offsetX = 0;
 	this.offsetY = 0;
-	this.base = new Platformer.levelBase();
+	Platformer.levelBase.call(this);
 	if(this.init)
 		this.init();
 };
