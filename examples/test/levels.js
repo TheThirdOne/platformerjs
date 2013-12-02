@@ -80,6 +80,7 @@ var temp = function(){
     this.gameOver.setVisible(true);
     bindingsDown[pause]();
   };
+  this.ladders = [];
   this.loop = function(){
     console.log('hello');
   };
@@ -92,30 +93,30 @@ var init = function(){
     collision.add(this.collision[i]);
   }
   //stage.add(collision);
-  for(var i = 0; i < this.ladders.length; i++){
+  for(i = 0; i < this.ladders.length; i++){
     ladders.add(this.ladders[i]);
   }
   //stage.add(ladders);
-  playerLayer.add(this.player);
+ // playerLayer.add(this.player);
   //stage.add(playerLayer);
-  this.player.start();
-  for(var i = 0; i < this.enemies.length;i++){
+  //this.player.start();
+  for(i = 0; i < this.enemies.length;i++){
     enemies.add(this.enemies[i].sprite);
   }
   //stage.add(enemies);
-  for(var i = 0; i < this.enemies.length;i++){
+  for(i = 0; i < this.enemies.length;i++){
     this.enemies[i].sprite.start();
   }
-  for(var i = 0; i < level.enemies.length;i++){
+  for(i = 0; i < this.enemies.length;i++){
     hud.add(level.enemies[i].sight);
   }
-  hud.add(this.base.clock);
-  this.base.clock.start();
+  /*hud.add(this.base.clock);
+  this.clock.start();
   hud.add(this.base.alarm);
-  this.base.alarm.start();
-  hud.add(this.base.pauseText);
-  hud.add(this.base.gameOver);
-  //stage.add(hud);
+  thisalarm.start();
+  hud.add(this.pauseText);
+  hud.add(this.gameOver);
+  //stage.add(hud);*/
   this.interval = window.setInterval(this.loop,constants.playloop);
   init_bindings();
 };
@@ -126,20 +127,22 @@ var destroy = function(){
     temp[i].destroy();
   }
   temp = ladders.getChildren();
-  for(var i = temp.length-1; 0 <= i; i--){
+  for(i = temp.length-1; 0 <= i; i--){
     temp[i].destroy();
   }
   temp = enemies.getChildren();
-  for(var i = temp.length-1; 0 <= i; i--){
+  for(i = temp.length-1; 0 <= i; i--){
     temp[i].destroy();
   }
   temp = playerLayer.getChildren();
-  for(var i = temp.length-1; 0 <= i; i--){
+  for(i = temp.length-1; 0 <= i; i--){
     temp[i].destroy();
   }
   temp = hud.getChildren();
-  for(var i = temp.length-1; 0 <= i; i--){
+  for(i = temp.length-1; 0 <= i; i--){
     temp[i].destroy();
   }
 };
-levels[0] = new Platformer.Level({name: 0, init: init, destroy: destroy,player:{}});
+function init_bindings(){
+  
+}

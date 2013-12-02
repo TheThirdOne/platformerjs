@@ -4,6 +4,9 @@ Platformer.initKeys();
 function initKeys(){
 	Platformer.setBindingUp(down, function(){console.log('hello')});
 }
+var constants = {
+  playloop: 50
+};
 var person = {
   anims:[{name: 'idle', slides:[7]},
          {name: 'walk', slides:[0,1,2,3]},
@@ -38,6 +41,7 @@ Platformer.onLoad = function(){
         height: 400,
         fillPatternImage: Platformer.images[3]
       });
+  levels[0] = new Platformer.Level({name: 0, init: init, destroy: destroy,player:{}});
   var layer = new Kinetic.Layer();
   var level = new Platformer.levelBase();
   layer.add(back);
