@@ -15,7 +15,7 @@ Platformer.keys = [];
 Platformer.setBindingDown = function(key, func){
 	Platformer.bindingsDown[key]=func;
 };
-Plaformer.setBindingUp = function(key, func){
+Platformer.setBindingUp = function(key, func){
 	Platformer.bindingsDown[key]=func;
 };
 Platformer.moveBindingUp = function(from, to){

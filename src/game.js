@@ -76,6 +76,7 @@ Platformer.generateBlocks = function(level){
 };
 Platformer.generateEnemies = function(AI,enemies){
         var out = [];
+        if(!enemies) return [];
         for(var i = 0; i < enemies.length; i++){
                 out[i]= new AI(enemies[i]);
         }
