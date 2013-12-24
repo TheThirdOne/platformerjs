@@ -1,1 +1,3 @@
 *.proj
+compiler.jar
+platformer.min.js
