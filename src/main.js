@@ -20,7 +20,8 @@ Platformer.init=function(container,w,h)
 	});
 };
 Platformer.reset = function(level){
-	if(!level)
+	if(!level){
 		return;
+	}
 	level.destroy();
 };

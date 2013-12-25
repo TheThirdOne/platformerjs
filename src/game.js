@@ -41,21 +41,45 @@ Platformer.Entity.prototype={
 	setScaleX: function(x){
 		this.sprite.setScaleX(x);
 	},
-	getWidth: function(x){
+	/**
+	 * Gets original width 
+	 * @returns {Number} width
+	 */
+	getWidth: function(){
 		return this.sprite.getWitdh();
 	},
-	getHeight: function(x){
+	/**
+	 * Sets original height
+	 * @returns {Number} height
+	 */
+	getHeight: function(){
 		return this.sprite.getHeight();
 	},
+	/**
+	 * Sets X
+	 * @param {Number} x
+	 */
 	setX: function (x){
 		this.sprite.setX(x);
 	},
+	/**
+	 * Gets X
+	 * @returns {Number} x
+	 */
 	getX: function (){
 		this.sprite.getX();
 	},
+	/**
+	 * Sets Y
+	 * @param {Number} y
+	 */
 	setY: function (y){
 		this.sprite.setY(y);
 	},
+	/**
+	 * Gets Y
+	 * @returns {Number} y
+	 */
 	getY: function (){
 		this.sprite.getY();
 	}
@@ -75,25 +99,25 @@ Platformer.Level = function(options){
 	this.offsetX = 0;
 	this.offsetY = 0;
 	Platformer.levelBase.call(this);
-	if(this.init)
+	if(this.init){
 		this.init();
+	}
 };
 Platformer.setLevelBase = function(func){
 	Platformer.levelBase = func;
 };
 Platformer.generateBlocks = function(level){
-		if(!level)
-			return [];
-        var out = [];
-        for(var i = 0; i < level.blocks.length; i++){
-                out[i]= new Kinetic.Rect({x: level.blocks[i][0],y: level.blocks[i][1],
-                        width: level.blocks[i][2],height:level.blocks[i][3],fillPatternImage: level.images[level.type[i]]});
-        }
-        return out;
+		if(!level){return [];}
+    var out = [];
+    for(var i = 0; i < level.blocks.length; i++){
+            out[i]= new Kinetic.Rect({x: level.blocks[i][0],y: level.blocks[i][1],
+                    width: level.blocks[i][2],height:level.blocks[i][3],fillPatternImage: level.images[level.type[i]]});
+    }
+    return out;
 };
 Platformer.generateEnemies = function(AI,enemies){
         var out = [];
-        if(!enemies) return [];
+        if(!enemies){ return [];}
         for(var i = 0; i < enemies.length; i++){
                 out[i]= new AI(enemies[i]);
         }

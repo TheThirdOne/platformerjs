@@ -87,23 +87,26 @@ Platformer.Binding.prototype.initKeys = function(up,down){
 	this.unlockKeys = this.unlockKeys || function(){
 		return false;
 	};
-	var self = this
+	var self = this;
 	document.onkeydown = function(evt){
     if(!self.keys[evt.keyCode]){
       self.keys[evt.keyCode] = true;
       console.log(evt.keyCode); //logs keyCode
       if(!self.blockKeys(evt) || self.unlockKeys(evt)){
-        if(self.bindingsDown[evt.keyCode])
+        if(self.bindingsDown[evt.keyCode]){
           self.bindingsDown[evt.keyCode](evt);
-      }else
-      self.keyBuffer.push(evt); //adds evt to be processed later
+        }
+      }else{
+        self.keyBuffer.push(evt); //adds evt to be processed later
+      }
     }
 	};
 	document.onkeyup = function(evt){
     self.keys[evt.keyCode] = false;
     if(!self.blockKeys(evt) || self.unlockKeys(evt)){
-      if(self.bindingsUp[evt.keyCode])
-      self.bindingsUp[evt.keyCode](evt);
+      if(self.bindingsUp[evt.keyCode]){
+        self.bindingsUp[evt.keyCode](evt);
+      }
 		}else{
 			self.keyBuffer.push(evt); //adds evt to be processed later
 		}

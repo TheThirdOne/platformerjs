@@ -18,7 +18,7 @@ Platformer.Animation = function(slides, data){
 };
 Platformer.init_sound = function(type, channels, volume){
   sounds[type]=[];
-  for (a=0;a<channels;a++) {                  
+  for (var a=0;a<channels;a++) {                  
     sounds[type][a] = {};
     sounds[type][a].channel = new Audio();   
     sounds[type][a].channel.src = document.getElementById(type).src; 
@@ -29,7 +29,7 @@ Platformer.init_sound = function(type, channels, volume){
   }
 };
 Platformer.play_multi_sound = function(s, start) {
-  for (a=0;a<sounds[s].length;a++) {
+  for (var a=0;a<sounds[s].length;a++) {
     thistime = new Date();
     temp = sounds[s];
     if (sounds[s][a].finished < thistime.getTime()) {      
