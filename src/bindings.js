@@ -38,6 +38,22 @@ Platformer.Binding.prototype.setBindingUp = function(key, func){
 	this.bindingsDown[key]=func;
 };
 /**
+ * Gets a callback for a keycode on down
+ * @param {Number} keycode Key to have the binding set to
+ * @returns {Function} callback callback for that key on keydown
+ */
+Platformer.Binding.prototype.getBindingDown = function(key){
+	return this.bindingsDown[key];
+};
+/**
+ * Gets a callback for a keycode on up
+ * @param {Number} keycode Key to have the binding set to
+ * @returns {Function} callback callback for that key on keydown
+ */
+Platformer.Binding.prototype.getBindingUp = function(key){
+	return this.bindingsUp[key];
+};
+/**
  * Moves a callback from one keycode to another
  * @param {Number} from source
  * @param {Number} to destination

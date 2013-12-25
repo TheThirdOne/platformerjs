@@ -1,26 +1,43 @@
+/**
+ * Entity Constructor
+ *@constructor 
+ */
 Platformer.Entity = function(sprite, options){
 	this.sprite = new Kinetic.Sprite(sprite);
 };
 Platformer.Entity.prototype={
 	dy: 0,
 	dx: 0,
-	/**Sets direction flipping about the middle*/
-	setDirectionX: function(direction){
+	/**
+	 * Sets direction flipping about the middle
+	 * @param {Number} direction + or - value to denote direction 
+	 * @param {Number} [flipX] x value of axis of flip (default: .5)
+	 */
+	setDirectionX: function(direction, flipX){
+    flipX = flipX || 0.5;
 		if(direction > 0){
 			if(this.getScaleX() < 0){
-        this.setScaleX(1);
-        this.setX(this.getX() - this.getWidth()/2);
+          this.setScaleX(1);
+          this.setX(this.getX()+this.getWidth()*(1-flipX));
         }
       }else{
         if(this.getScaleX() > 0){
           this.setScaleX(-1);
-          this.setX(this.getX() + this.getWidth()/2);
+          this.setX(this.getX() + this.getWidth()*flipX);
         }
       }
 	},
+	/**
+	 * Gets scale in the X direction
+	 * @returns {Number} scale
+	 */
 	getScaleX: function(){
 		this.sprite.getScaleX();
 	},
+	/**
+	 * Sets scale in the X direction
+	 * @param {Number} x new scale value
+	 */
 	setScaleX: function(x){
 		this.sprite.setScaleX(x);
 	},
