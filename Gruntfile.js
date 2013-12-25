@@ -74,6 +74,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsdoc-plugin');
   // Default task.
-  grunt.registerTask('default', ['concat','jshint', 'uglify']);
+  grunt.registerTask('default', ['concat', 'uglify','jshint']);
 
 };
