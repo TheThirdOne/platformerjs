@@ -6,7 +6,6 @@ Platformer.Binding = function(){
 };
 /** 
  * Sets overide for blockKey
- * @method
  * @param {Function} unlockKeys overide blockKeys and force bindings to be called
  */
 Platformer.Binding.prototype.setUnlockKeys = function(unlockKey){
