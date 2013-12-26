@@ -31,6 +31,7 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
+        force: true,
         curly: true,
         eqeqeq: true,
         immed: true,
@@ -64,6 +65,14 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       }
+    },
+    shell: {                                // Task
+        jsDoc: {                      // Target
+            options: {                      // Options
+                stdout: true
+            },
+            command: 'node_modules/jsdoc/jsdoc.js src/* -d doc --verbose'
+        }
     }
   });
 
@@ -73,7 +82,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jsdoc-plugin');
+  grunt.loadNpmTasks('grunt-shell');
   // Default task.
-  grunt.registerTask('default', ['concat', 'uglify','jshint']);
+  grunt.registerTask('default', ['concat', 'uglify','shell','jshint']);
 
 };
