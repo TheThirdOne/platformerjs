@@ -1,6 +1,12 @@
 /*global module:false*/
 module.exports = function(grunt) {
-
+  var sourceFiles = [
+    'src/main.js',
+    'src/bindings.js',
+    'src/game.js',
+    'src/resource.js',
+    'src/collision.js'
+  ];
   // Project configuration.
   grunt.initConfig({
     // Metadata.
@@ -16,8 +22,8 @@ module.exports = function(grunt) {
         separator: '\n',
       },
       dist: {
-        src: ['src/main.js', 'src/bindings.js','src/game.js','resource.js','collision.js'],
-        dest: 'dist/built.js',
+        src: sourceFiles,
+        dest: 'build/concat.js',
       },
     },
     uglify: {
@@ -26,7 +32,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        dest: 'build/<%= pkg.name %>.min.js'
       }
     },
     jshint: {
@@ -52,7 +58,7 @@ module.exports = function(grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
+      lib_main: {
         src: ['<%= concat.dist.dest %>']
       }
     },
@@ -61,9 +67,9 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'qunit']
+      lib_main: {
+        files: '<%= jshint.lib_main.src %>',
+        tasks: ['jshint:lib_main']
       }
     },
     shell: {                                // Task
