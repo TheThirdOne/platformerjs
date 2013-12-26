@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   var sourceFiles = [
     'src/main.js',
     'src/bindings.js',
+    'src/entities.js',
     'src/game.js',
     'src/resource.js',
     'src/collision.js'
@@ -77,7 +78,7 @@ module.exports = function(grunt) {
             options: {                      // Options
                 stdout: true
             },
-            command: 'node_modules/jsdoc/jsdoc.js src/* -d doc --verbose'
+            command: 'node_modules/jsdoc/jsdoc.js src/* README.md -d doc --verbose'
         }
     }
   });
