@@ -8,7 +8,15 @@ Built on top of [KineticJS](http://kineticjs.com)
 
 Developers
 -----------
+Preparation (may need sudo):  
+```npm install```  
+Make sure you have grunt-cli installed globally or install it locally
 
-How to build minified version:  
-```sh build.sh```   
-Note that this requires java becuase it is using googles closure compiler. 
+Building All:  
+```grunt```   
+Building Documentation:  
+```grunt doc```  
+Building Minified JS:  
+```grunt min```  
+Check Code Style: 
+```grunt style```  

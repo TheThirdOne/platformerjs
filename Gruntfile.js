@@ -81,9 +81,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-jsdoc-plugin');
   grunt.loadNpmTasks('grunt-shell');
   // Default task.
   grunt.registerTask('default', ['concat', 'uglify','shell','jshint']);
+  grunt.registerTask('min', ['concat', 'uglify']);
+  grunt.registerTask('style', ['concat', 'jshint']);
+  grunt.registerTask('doc', ['shell']);
 
 };
