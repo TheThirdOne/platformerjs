@@ -13,10 +13,10 @@ Preparation (may need sudo):
 Make sure you have grunt-cli installed globally or install it locally
 
 Building All:  
-```grunt```   
+```grunt ```   
 Building Documentation:  
 ```grunt doc```  
 Building Minified JS:  
 ```grunt min```  
-Check Code Style: 
+Check Code Style:  
 ```grunt style```  
