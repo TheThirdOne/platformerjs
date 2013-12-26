@@ -73,8 +73,8 @@ Platformer.Binding.prototype.moveBindingDown = function(from, to){
 };
 /**
  * Initializes keybindings.
- * @param {Array} [up] array representing bindings for keyup
- * @param {Array} [down] array representing bindings for keydown
+ * @param {Array} [up=[]] array representing bindings for keyup
+ * @param {Array} [down=[]] array representing bindings for keydown
  */
 Platformer.Binding.prototype.initKeys = function(up,down){
 	this.bindingsDown = down || this.bindingsDown || [];//uses input, current value or []

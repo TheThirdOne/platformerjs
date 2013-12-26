@@ -9,7 +9,7 @@ Platformer.Collision = function(){
  * Tests if bottom of a entity collides with with a group of other entities
  * @param {Platformer.Entity} entity entity to check for collision
  * @param {Array} entities array of entities to check against
- * @param {Number} [width] distance from the edge of the entity to test on a scale of 0-.5 (default: .2) 
+ * @param {Number} [width = .2] distance from the edge of the entity to test on a scale of 0-.5 
  * @returns {Boolean} collides if the entity collides
  */
 Platformer.Collision.prototype.collideBottom = function(entity, children, width){
@@ -21,7 +21,7 @@ Platformer.Collision.prototype.collideBottom = function(entity, children, width)
  * Tests if the top of a entity collides with a group of other entities
  * @param {Platformer.Entity} entity entity to check for collision
  * @param {Array} entities array of entities to check against
- * @param {Number} [width] distance from the edge of the entity to test on a scale of 0-.5 (default: .2) 
+ * @param {Number} [width = .2] distance from the edge of the entity to test on a scale of 0-.5  
  * @returns {Boolean} collides if the entity collides
  */
 Platformer.Collision.prototype.collideTop = function(entity, children, width){
@@ -33,7 +33,7 @@ Platformer.Collision.prototype.collideTop = function(entity, children, width){
  * Tests if the left of a entity collides with a group of other entities
  * @param {Platformer.Entity} entity entity to check for collision
  * @param {Array} entities array of entities to check against
- * @param {Number} [height] distance from the edge of the entity to test on a scale of 0-.5 (default: .2) 
+ * @param {Number} [height = .2] distance from the edge of the entity to test on a scale of 0-.5  
  * @returns {Boolean} collides if the entity collides
  */
 Platformer.Collision.prototype.collideLeft = function(entity, children, height){
@@ -49,7 +49,7 @@ Platformer.Collision.prototype.collideLeft = function(entity, children, height){
  * Tests if the Right of a entity collides with a group of other entities
  * @param {Platformer.Entity} entity entity to check for collision
  * @param {Array} entities array of entities to check against
- * @param {Number} [height] distance from the edge of the entity to test on a scale of 0-.5 (default: .2) 
+ * @param {Number} [height = .2] distance from the edge of the entity to test on a scale of 0-.5  
  * @returns {Boolean} collides if the entity collides
  */
 Platformer.Collision.prototype.collideRight = function(entity, children, height){

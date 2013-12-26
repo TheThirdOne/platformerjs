@@ -11,7 +11,7 @@ Platformer.Entity.prototype={
 	/**
 	 * Sets direction flipping about the middle
 	 * @param {Number} direction + or - value to denote direction 
-	 * @param {Number} [flipX] x value of axis of flip (default: .5)
+	 * @param {Number} [flipX = .5] x value of axis of flip
 	 */
 	setDirectionX: function(direction, flipX){
     flipX = flipX || 0.5;
