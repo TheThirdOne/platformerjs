@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   var sourceFiles = [
     'src/main.js',
     'src/bindings.js',
-    'src/entities.js',
+    'src/entity.js',
     'src/game.js',
     'src/resource.js',
     'src/collision.js'

@@ -1,6 +1,6 @@
 /**
  * Entity Constructor
- *@constructor 
+ * @constructor 
  */
 Platformer.Entity = function(sprite, options){
 	this.sprite = new Kinetic.Sprite(sprite);
@@ -84,8 +84,13 @@ Platformer.Entity.prototype={
 		this.sprite.getY();
 	}
 };
-
-Platformer.createPlayer = function(sprite,options){
-	var temp = new Platformer.Entity(sprite,options);
-	//temp does stuff
+/**
+ * Player Constructor
+ * @constructor 
+ * @augments Platformer.Entity
+ */
+Platformer.Player = function(sprite,options){
+	Platformer.Entity.call(this,sprite,options);
+	//continues
 };
+Platformer.Player.prototype = Object.create(Platformer.Entity.prototype);
