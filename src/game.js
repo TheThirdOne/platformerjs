@@ -13,10 +13,13 @@ Platformer.Level = function(options){
 		this.init();
 	}
 };
-Platformer.setLevelBase = function(func){
-	Platformer.levelBase = func;
+Platformer.Game = function(resourceManger){
+  
 };
-Platformer.generateBlocks = function(level){
+Platformer.Game.prototype.setLevelBase = function(func){
+	this.levelBase = func;
+};
+Platformer.Game.generateBlocks = function(level){
 		if(!level){return [];}
     var out = [];
     for(var i = 0; i < level.blocks.length; i++){
@@ -25,7 +28,7 @@ Platformer.generateBlocks = function(level){
     }
     return out;
 };
-Platformer.generateEnemies = function(AI,enemies){
+Platformer.Game.generateEnemies = function(AI,enemies){
         var out = [];
         if(!enemies){ return [];}
         for(var i = 0; i < enemies.length; i++){
@@ -33,10 +36,10 @@ Platformer.generateEnemies = function(AI,enemies){
         }
         return out;
 };
-Platformer.playLevel = function(level){
-	Platformer.reset(Platformer.currentLevel);
-	Platformer.currentLevel = level;
-	Platformer.currentLevel.start();
+Platformer.Game.prototype.playLevel = function(level){
+	this.reset(Platformer.currentLevel);
+	this.currentLevel = level;
+	this.currentLevel.start();
 };
 Platformer.load = function()
 {
@@ -45,15 +48,15 @@ Platformer.load = function()
 		Platformer.onLoad();
 	}
 };
-Platformer.init=function(container,w,h)
+Platformer.Game.prototype.init=function(container,w,h)
 {
-	Platformer.stage = new Kinetic.Stage({
+	this.stage = new Kinetic.Stage({
     container: container,
     width: w,
     height: h
 	});
 };
-Platformer.reset = function(level){
+Platformer.Game.prototype.reset = function(level){
 	if(!level){
 		return;
 	}
