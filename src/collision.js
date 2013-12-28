@@ -14,8 +14,8 @@ Platformer.Collision = function(){
  */
 Platformer.Collision.prototype.collideBottom = function(entity, children, width){
   width = width || 0.2;
-	return this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(width),entity.getY()+entity.getHeight(), children)||
-	this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(1-width),entity.getY()+entity.getHeight(), children);
+  return this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(width),entity.getY()+entity.getHeight(), children)||
+  this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(1-width),entity.getY()+entity.getHeight(), children);
 };
 /**
  * Tests if the top of a entity collides with a group of other entities
@@ -26,8 +26,8 @@ Platformer.Collision.prototype.collideBottom = function(entity, children, width)
  */
 Platformer.Collision.prototype.collideTop = function(entity, children, width){
   width = width || 0.2;
-	return  this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*width,entity.getY(), children)||
-	this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(1-width),entity.getY(), children);
+  return this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*width,entity.getY(), children)||
+  this.collide(entity.getX() + entity.getWidth()*entity.getScaleX()*(1-width),entity.getY(), children);
 };
 /**
  * Tests if the left of a entity collides with a group of other entities
@@ -38,13 +38,13 @@ Platformer.Collision.prototype.collideTop = function(entity, children, width){
  */
 Platformer.Collision.prototype.collideLeft = function(entity, children, height){
   height = height || 0.2;
-	if(entity.getScaleX() > 0){
-		return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
-		this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
-	}else{
-		return this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*(1-height), children)||
-		this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
-	}
+  if(entity.getScaleX() > 0){
+    return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
+    this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
+  }else{
+    return this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*(1-height), children)||
+    this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
+  }
 };
 /**
  * Tests if the Right of a entity collides with a group of other entities
@@ -55,13 +55,13 @@ Platformer.Collision.prototype.collideLeft = function(entity, children, height){
  */
 Platformer.Collision.prototype.collideRight = function(entity, children, height){
   height = height || 0.2;
-	if(entity.getScaleX() > 0){
-		return this.collide(entity.getX() + entity.getheight(),entity.getY()+entity.getHeight()*(1-height), children)||
-		this.collide(entity.getX() + entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
-	}else{
-		return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
-		this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
-	}
+  if(entity.getScaleX() > 0){
+    return this.collide(entity.getX() + entity.getheight(),entity.getY()+entity.getHeight()*(1-height), children)||
+    this.collide(entity.getX() + entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
+  }else{
+    return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
+    this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
+  }
 };
 /**
  * Tests if point intersects group of entities
@@ -71,12 +71,12 @@ Platformer.Collision.prototype.collideRight = function(entity, children, height)
  * @returns {Boolean} collides if the point collides
  */
 Platformer.Collision.prototype.collide = function(x,y,children){
-	for(var i = 0; i < children.length; i++){
-		if(x, y, this.testCollision(children[i])){
-			return true;
-		}
-	}
-	return false;
+  for(var i = 0; i < children.length; i++){
+    if(x, y, this.testCollision(children[i])){
+      return true;
+    }
+  }
+  return false;
 };
 /**
  * Tests if point intersects a entity
@@ -86,17 +86,17 @@ Platformer.Collision.prototype.collide = function(x,y,children){
  * @returns {Boolean} collides if the entity collides with the point
  */
 Platformer.Collision.prototype.testCollision = function(x, y, object){
-	if(object.getY() > y || object.getY() + object.getHeight() < y){
-		return false;	
-	}
-	if(object.getScaleX() > 0){
-		if(object.getX() > x || object.getX() + object.getWidth() < x){
-				return false;
-		}
-	}else{
-		if(object.getX() < x || object.getX() - object.getWidth() > x){
-				return false;
+  if(object.getY() > y || object.getY() + object.getHeight() < y){
+    return false;  
+  }
+  if(object.getScaleX() > 0){
+    if(object.getX() > x || object.getX() + object.getWidth() < x){
+        return false;
     }
-	}
-	return true;
+  }else{
+    if(object.getX() < x || object.getX() - object.getWidth() > x){
+        return false;
+    }
+  }
+  return true;
 };

@@ -63,7 +63,7 @@ Platformer.ResourceManager.prototype.load = function(){
   this.itemsToLoad--;
   if(this.itemsToLoad === 0){
     this.onLoad();
-	}
+  }
 };
 Platformer.ResourceManager.prototype.onLoad = function(){
   this.loaded = true;
