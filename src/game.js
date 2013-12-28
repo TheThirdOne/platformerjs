@@ -41,13 +41,6 @@ Platformer.Game.prototype.playLevel = function(level){
 	this.currentLevel = level;
 	this.currentLevel.start();
 };
-Platformer.load = function()
-{
-	Platformer.itemsToLoad--;
-	if(Platformer.itemsToLoad === 0){
-		Platformer.onLoad();
-	}
-};
 Platformer.Game.prototype.init=function(container,w,h)
 {
 	this.stage = new Kinetic.Stage({

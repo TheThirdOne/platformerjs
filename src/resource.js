@@ -2,11 +2,10 @@ Platformer.ResourceManager = function(){
   this.sounds = {};
   this.loaded = false;
 };
-
 Platformer.ResourceManager.AnimationSet = function(data){
   var out = {};
   for(var i = 0; i < data.anims.length; i++){
-    out[data.anims[i].name]=Platformer.Animation(data.anims[i].slides,data);
+    out[data.anims[i].name]=Platformer.ResourceManager.Animation(data.anims[i].slides,data);
   }
   return out;
 };
@@ -35,8 +34,8 @@ Platformer.ResourceManager.prototype.init_sound = function(type, channels, volum
   }
 };
 Platformer.ResourceManager.prototype.play_multi_sound = function(s, start) {
+  var temp, thistime = new Date();
   for (var a=0;a<this.sounds[s].length;a++) {
-    thistime = new Date();
     temp = this.sounds[s];
     if (this.sounds[s][a].finished < thistime.getTime()) {      
       this.sounds[s][a].finished = thistime.getTime() + document.getElementById(s).duration*1000 + start*1000;

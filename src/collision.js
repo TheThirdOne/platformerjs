@@ -38,12 +38,13 @@ Platformer.Collision.prototype.collideTop = function(entity, children, width){
  */
 Platformer.Collision.prototype.collideLeft = function(entity, children, height){
   height = height || 0.2;
-	if(entity.getScaleX() > 0)
+	if(entity.getScaleX() > 0){
 		return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
 		this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
-	else
+	}else{
 		return this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*(1-height), children)||
 		this.collide(entity.getX() - entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
+	}
 };
 /**
  * Tests if the Right of a entity collides with a group of other entities
@@ -54,12 +55,13 @@ Platformer.Collision.prototype.collideLeft = function(entity, children, height){
  */
 Platformer.Collision.prototype.collideRight = function(entity, children, height){
   height = height || 0.2;
-	if(entity.getScaleX() > 0)
+	if(entity.getScaleX() > 0){
 		return this.collide(entity.getX() + entity.getheight(),entity.getY()+entity.getHeight()*(1-height), children)||
 		this.collide(entity.getX() + entity.getWidth(),entity.getY()+entity.getHeight()*height, children);
-	else
+	}else{
 		return this.collide(entity.getX(),entity.getY()+entity.getHeight()*(1-height), children)||
 		this.collide(entity.getX(),entity.getY()+entity.getHeight()*height, children);
+	}
 };
 /**
  * Tests if point intersects group of entities
@@ -70,8 +72,9 @@ Platformer.Collision.prototype.collideRight = function(entity, children, height)
  */
 Platformer.Collision.prototype.collide = function(x,y,children){
 	for(var i = 0; i < children.length; i++){
-		if(x, y, this.testCollision(children[i]))
+		if(x, y, this.testCollision(children[i])){
 			return true;
+		}
 	}
 	return false;
 };
@@ -83,14 +86,17 @@ Platformer.Collision.prototype.collide = function(x,y,children){
  * @returns {Boolean} collides if the entity collides with the point
  */
 Platformer.Collision.prototype.testCollision = function(x, y, object){
-	if(object.getY() > y || object.getY() + object.getHeight() < y)
+	if(object.getY() > y || object.getY() + object.getHeight() < y){
 		return false;	
+	}
 	if(object.getScaleX() > 0){
-		if(object.getX() > x || object.getX() + object.getWidth() < x)
+		if(object.getX() > x || object.getX() + object.getWidth() < x){
 				return false;
+		}
 	}else{
-		if(object.getX() < x || object.getX() - object.getWidth() > x)
+		if(object.getX() < x || object.getX() - object.getWidth() > x){
 				return false;
+    }
 	}
 	return true;
 };
