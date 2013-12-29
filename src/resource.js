@@ -1,7 +1,14 @@
+/**
+ * Resaource manager 
+ * @constructor
+ */
 Platformer.ResourceManager = function(){
   this.sounds = {};
   this.loaded = false;
 };
+/**
+ * Loads a set of KineticJS animations  
+ */
 Platformer.ResourceManager.AnimationSet = function(data){
   var out = {};
   for(var i = 0; i < data.anims.length; i++){
@@ -9,6 +16,9 @@ Platformer.ResourceManager.AnimationSet = function(data){
   }
   return out;
 };
+/**
+ * Makes a single animation from a abstracted data type
+ */
 Platformer.ResourceManager.Animation = function(slides, data){
   var x,y;
   var out=[];
@@ -20,6 +30,9 @@ Platformer.ResourceManager.Animation = function(slides, data){
   }
   return out;
 };
+/**
+ * Initializes a sound file for overlapping playback
+ */
 Platformer.ResourceManager.prototype.init_sound = function(type, channels, volume){
   this.sounds[type]=[];
   for (var a=0;a<channels;a++) {                  
@@ -33,6 +46,9 @@ Platformer.ResourceManager.prototype.init_sound = function(type, channels, volum
     }
   }
 };
+/**
+ * Play an initialized sound
+ */
 Platformer.ResourceManager.prototype.play_multi_sound = function(s, start) {
   var temp, thistime = new Date();
   for (var a=0;a<this.sounds[s].length;a++) {
@@ -45,6 +61,9 @@ Platformer.ResourceManager.prototype.play_multi_sound = function(s, start) {
     }
   }
 };
+/**
+ * Loads an array of images for later use
+ */
 Platformer.ResourceManager.prototype.loadImages = function(src){
   this.images = [];
   this.itemsToLoad = this.itemsToLoad || 0;
@@ -59,15 +78,26 @@ Platformer.ResourceManager.prototype.loadImages = function(src){
     this.images[i].src = src[i];
   }
 };
+/**
+ * Internal function used for calling the onload Callback
+ */
 Platformer.ResourceManager.prototype.load = function(){
   this.itemsToLoad--;
   if(this.itemsToLoad === 0){
     this.onLoad();
+  
+  
   }
 };
+/**
+ * Default callback to detect wether everythin has been loaded
+ */
 Platformer.ResourceManager.prototype.onLoad = function(){
   this.loaded = true;
 };
+/**
+ * Sets callback to be called upon all images being loaded
+ */
 Platformer.ResourceManager.prototype.setOnload = function(onload){
   this.onLoad = onload;
   if(this.loaded){
