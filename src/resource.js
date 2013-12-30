@@ -8,6 +8,15 @@ Platformer.ResourceManager = function(){
 };
 /**
  * Loads a set of KineticJS animations  
+ * @param {Object} data see example for the format
+ * @example 
+ * {
+ *   anims:[{name: 'idle', slides:[7]},
+ *          {name: 'run', slides:[0,1,2,3]},
+ *          {name: 'jump', slides:[4,5,6]},
+ *          {name: 'jump_stay', slides:[6]}],
+ *   columns:4,rows:2,width:32,height:64
+ * }
  */
 Platformer.ResourceManager.AnimationSet = function(data){
   var out = {};
@@ -18,6 +27,8 @@ Platformer.ResourceManager.AnimationSet = function(data){
 };
 /**
  * Makes a single animation from a abstracted data type
+ * @param {Array} slides the indexes of sprites in the spritesheet
+ * @param {Object} data see AnimationSet's data object
  */
 Platformer.ResourceManager.Animation = function(slides, data){
   var x,y;
@@ -32,6 +43,9 @@ Platformer.ResourceManager.Animation = function(slides, data){
 };
 /**
  * Initializes a sound file for overlapping playback
+ * @param {String} name name for the sound
+ * @param {Number} channels number of channels to allocate
+ * @param {Number} volume 
  */
 Platformer.ResourceManager.prototype.init_sound = function(type, channels, volume){
   this.sounds[type]=[];
@@ -48,6 +62,8 @@ Platformer.ResourceManager.prototype.init_sound = function(type, channels, volum
 };
 /**
  * Play an initialized sound
+ * @param {String} name name of sound to play
+ * @param {Number} start time to start
  */
 Platformer.ResourceManager.prototype.play_multi_sound = function(s, start) {
   var temp, thistime = new Date();
@@ -63,6 +79,7 @@ Platformer.ResourceManager.prototype.play_multi_sound = function(s, start) {
 };
 /**
  * Loads an array of images for later use
+ * @param {Array} src array of paths to load images from 
  */
 Platformer.ResourceManager.prototype.loadImages = function(src){
   this.images = [];
@@ -97,6 +114,7 @@ Platformer.ResourceManager.prototype.onLoad = function(){
 };
 /**
  * Sets callback to be called upon all images being loaded
+ * @param {onload} onload callback to be called on all images being loaded
  */
 Platformer.ResourceManager.prototype.setOnload = function(onload){
   this.onLoad = onload;
