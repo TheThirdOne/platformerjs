@@ -33,12 +33,17 @@ Platformer.Game.prototype.addLevel = function(){
 };
 /**
  * Sets a base level to build new levels off of
+ * @param {Function} base Base constructor for levels
  */
 Platformer.Game.prototype.setLevelBase = function(func){
   this.levelBase = func;
 };
 /**
  * Generates an array of blocks to represent collision meshes
+ * @param {Object} level 
+ * @param {Array} level.bocks 
+ * @param {Array} level.images 
+ * @param {Array} level.type
  */
 Platformer.Game.generateBlocks = function(level){
     if(!level){return [];}
@@ -51,6 +56,8 @@ Platformer.Game.generateBlocks = function(level){
 };
 /**
  * Generates Enemies given a base template and array of options
+ * @param {Function} ai enemy factory
+ * @param {Array} options options for each enemy
  */
 Platformer.Game.generateEnemies = function(AI,enemies){
         var out = [];
@@ -62,6 +69,7 @@ Platformer.Game.generateEnemies = function(AI,enemies){
 };
 /**
  * Playes a certain level
+ * @param {Platformer.Level} level plays a the level and resets the last
  */
 Platformer.Game.prototype.playLevel = function(level){
   this.reset(Platformer.currentLevel);
@@ -81,6 +89,7 @@ Platformer.Game.prototype.init=function(container,w,h)
 };
 /**
  * Resets a level of a game.
+ * @param {Platformer.Level} level destroys a levek
  */
 Platformer.Game.prototype.reset = function(level){
   if(!level){
